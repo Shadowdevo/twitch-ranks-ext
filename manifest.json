@@ -1,0 +1,19 @@
+{
+    "name": "Street Fighter V Ranks on Twitch",
+    "version": "1.0",
+    "description": "View ranks of players from a curated list",
+    "manifest_version": 2,
+    "permissions": ["activeTab", "declarativeContent"],
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "matches": [
+                "http://*.developer.chrome.com/*",
+                "https://*.developer.chrome.com/*"
+            ],
+            "js": [
+                "popup.js"
+            ]
+        }
+    ]
+}
