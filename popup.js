@@ -43,23 +43,24 @@ height: 30px;
 background-repeat: no-repeat;
 
 
+
 Array.from(document.querySelectorAll(".stream-thumbnail")).map(function (el) {
     var rankInfo = el.querySelector(".tw-mg-t-0");
     if (rankInfo.innerHTML === "") {
         rankInfo.innerHTML = `<div class="preview-card-appendage tw-flex">
-    <div class="preview-card-appendage__image-wrapper tw-align-items-center tw-flex tw-flex-grow-0 tw-flex-shrink-0 tw-justify-content-end" style="width: 7rem;">
+    <div class="preview-card-appendage__image-wrapper tw-align-items-center tw-flex tw-flex-grow-0 tw-flex-shrink-0 tw-justify-content-end" style="width: 6.6rem;">
         <div>
             <div class="metadata-icon__appendage metadata-icon__appendage--csgo-skill" style="height: 2.7rem; width: 7rem;">
-                <div style="background-image: url( https://game.capcom.com/cfn/sfv/as/profile/league_icon/300_140/0.png?h=ba00d7693037ffdcd4298d769b2869e9 ); background-position: center; background-size: contain; width: auto; height: 30px;"></div>
+                <div style="background-image: url( https://game.capcom.com/cfn/sfv/as/profile/league_icon/300_140/18.png?h=c992bbd05e4dc1dfd02c75d709c42b49 ); background-position: center; background-size: contain; width: auto; height: 30px; background-repeat: no-repeat;"></div>
             </div>
         </div>
     </div>
     <div class="tw-border-t tw-flex tw-flex-grow-1 tw-flex-shrink-1 tw-mg-l-1 tw-overflow-hidden tw-pd-y-05">
         <div class="tw-flex-grow-1 tw-flex-shrink-1 tw-overflow-hidden">
-            <p class="tw-ellipsis" title="The Global Elite">{{Rank Title}}</p>
+            <p class="tw-ellipsis" title="The Global Elite">Warlord</p>
         </div>
         <div class="tw-flex-grow-0 tw-flex-shrink-0">
-            <p class="">Rank</p>
+            <p class="">R. Mika</p>
         </div>
     </div>
 </div>`;
