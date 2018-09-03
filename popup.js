@@ -232,6 +232,10 @@ function getDatabaseInfo(usernames, cb) {
 }
 
 function getRankData() {
+    var user = users[username] || {
+        rank: "rookie",
+        character: "ryu"
+    };
     // gets the rank from the database
     return {
         rankTitle: (rankMap[user.rank] || {}).title || rankMap.rookie.title,
