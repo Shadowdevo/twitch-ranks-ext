@@ -1,26 +1,30 @@
 {
     "name": "Rank Viewer",
-    "page_action": {
-          "default_icon": {
-            "16": "icons/icon_16.png",
-            "19": "icons/icon_19.png",
-            "38": "icons/icon_38.png",
-            "48": "icons/icon_48.png",
-            "128": "icons/icon_128.png"
-          },
-          "default_title": "Rank Viewer",
-          "default_popup": "popup.html"
-        },
     "version": "1.0",
     "description": "View ranks of players from a curated list",
     "manifest_version": 2,
-    "permissions": ["activeTab"],
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "*://*/*"
+    ],
+    "page_action": {
+        "default_icon": {
+        "16": "icons/icon_16.png",
+        "19": "icons/icon_19.png",
+        "38": "icons/icon_38.png",
+        "48": "icons/icon_48.png",
+        "128": "icons/icon_128.png"
+        },
+        "default_title": "Rank Viewer",
+        "default_popup": "popup.html"
+    },
     "content_scripts": [
         {
             "run_at": "document_end",
+            "all_frames": true,
             "matches": [
-                "http://*.twitch.tv/directory/game/Street*Fighter*V",
-                "https://*.twitch.tv/directory/game/Street*Fighter*V"
+                "*://*.twitch.tv/directory/game/Street*Fighter*V"
             ],
             "css": [
                 "popup.css"

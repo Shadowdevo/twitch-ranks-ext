@@ -4,6 +4,15 @@
 // cookie name is scirid
 // cookies last 7 days
 
+var users = {};
+
+function getDatabaseInfo(usernames, cb) {
+    // get users from the database via the server
+    // set the users
+    users = [];
+    if(typeof cb === "function") cb();
+}
+
 var rankMap = {
     rookie: {
         title: "rookie",
@@ -87,31 +96,26 @@ var rankMap = {
     }
 }
 
-function getRankData() {
-    // gets the rank from the database
+var charMap = {};
+
+// gets the rank from the list of users
+function getRankData(username) {
+    var user = users[username] || {
+        rank: "rookie",
+        character: "ryu"
+    };
+
     return {
-        rankTitle: rankMap["rookie"].title,
-        rankImg: rankMap["rookie"].img,
-        charName: "Char Name",
-        charImg: ""
+        rankTitle: (rankMap[user.rank] || {}).title,
+        rankImg: (rankMap[user.rank] || {}).img,
+        charName: (charMap[user.character] || {}).name || "RYU",
+        charImg: (charMap[user.character] || {}).img || "https://game.capcom.com/cfn/sfv/as/img/character/thum/ryu.png?h=6e84a240c0927c29bf6850afed6bbfd1"
     }
 }
 
-function getRankInfo() {
-    var data = getRankData();
-
-    // // image styles
-    // // great grandparent
-    // width: 7rem;
-    // // parent
-    // height: 2.7rem;
-    // width: 7rem;
-    // // child
-    // background-image: url(https://game.capcom.com/cfn/sfv/as/profile/league_icon/300_140/8.png?h=25435d2…);
-    // background-position: center;
-    // background-size: contain;
-    // height: 30px;
-    // background-repeat: no-repeat;
+// returns a string of the HTML content that will contain the rank information to display under thumbnails
+function getRankInfo(username) {
+    var data = getRankData(username);
 
     return `<div class="preview-card-appendage tw-flex">
     <div class="preview-card-appendage__image-wrapper tw-align-items-center tw-flex tw-flex-grow-0 tw-flex-shrink-0 tw-justify-content-end" style="width: 6.6rem;">
@@ -132,9 +136,26 @@ function getRankInfo() {
 </div>`;
 }
 
-Array.from(document.querySelectorAll(".stream-thumbnail")).map(function (el) {
-    var rankInfo = el.querySelector(".tw-mg-t-0");
-    if (rankInfo.innerHTML === "") {
-        rankInfo.innerHTML = getRankInfo();
-    };
-})
+// gets a reference to the thumbnails
+var thumbnails = [];
+
+// populates the rank info for all loaded thumbnails
+function populateInfo() {
+    thumbnails.map(function (el) {
+        var rankInfo = el.querySelector(".tw-mg-t-0");
+        if (rankInfo.innerHTML === "") {
+            rankInfo.innerHTML = getRankInfo("username");
+        };
+    });
+}
+
+// the time, in seconds, that the script should update
+var interval = 1;
+setInterval(() => {
+    console.log("updating rank info");
+
+    thumbnails = Array.from(document.querySelectorAll(".stream-thumbnail"));
+    getDatabaseInfo(/*list of usernames*/null, () => {
+        populateInfo();
+    });
+}, interval * 1000);
