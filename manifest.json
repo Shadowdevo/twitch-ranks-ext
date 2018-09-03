@@ -8,8 +8,11 @@
         {
             "run_at": "document_end",
             "matches": [
-                "http://*.developer.chrome.com/*",
-                "https://*.developer.chrome.com/*"
+                "http://*.twitch.tv/directory/game/Street*Fighter*V",
+                "https://*.twitch.tv/directory/game/Street*Fighter*V"
+            ],
+            "css": [
+                "popup.css"
             ],
             "js": [
                 "popup.js"
