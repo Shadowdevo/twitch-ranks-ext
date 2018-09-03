@@ -90,8 +90,10 @@ var rankMap = {
 function getRankData() {
     // gets the rank from the database
     return {
-        title: rankMap["rookie"].title,
-        img: rankMap["rookie"].img
+        rankTitle: rankMap["rookie"].title,
+        rankImg: rankMap["rookie"].img,
+        charName: "Char Name",
+        charImg: ""
     }
 }
 
@@ -115,16 +117,16 @@ function getRankInfo() {
     <div class="preview-card-appendage__image-wrapper tw-align-items-center tw-flex tw-flex-grow-0 tw-flex-shrink-0 tw-justify-content-end" style="width: 6.6rem;">
         <div>
             <div class="metadata-icon__appendage metadata-icon__appendage--csgo-skill" style="height: 2.7rem; width: 6.6rem;">
-                <div style="background-image: url( ${data.img} ); background-position: center; background-size: contain; background-repeat: no-repeat; width: auto; height: 30px;"></div>
+                <div style="background-image: url( ${data.rankImg} ); background-position: center; background-size: contain; background-repeat: no-repeat; width: auto; height: 30px;"></div>
             </div>
         </div>
     </div>
     <div class="tw-border-t tw-flex tw-flex-grow-1 tw-flex-shrink-1 tw-mg-l-1 tw-overflow-hidden tw-pd-y-05">
         <div class="tw-flex-grow-1 tw-flex-shrink-1 tw-overflow-hidden">
-            <p class="tw-ellipsis" title="${data.title}">${data.title}</p>
+            <p class="tw-ellipsis" title="${data.rankTitle}">${data.rankTitle}</p>
         </div>
         <div class="tw-flex-grow-0 tw-flex-shrink-0">
-            <p class="">Rank</p>
+            <p class="">${"Char Name"}</p>
         </div>
     </div>
 </div>`;
