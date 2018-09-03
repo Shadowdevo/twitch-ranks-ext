@@ -231,7 +231,7 @@ function getDatabaseInfo(usernames, cb) {
     if (typeof cb === "function") cb();
 }
 
-function getRankData() {
+function getRankData(username) {
     var user = users[username] || {
         rank: "rookie",
         character: "ryu"
