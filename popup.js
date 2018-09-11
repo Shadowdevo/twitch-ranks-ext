@@ -1,10 +1,17 @@
+// Initialize Firebase
+var config = {
+    //auth for firebase
+};
+firebase.initializeApp(config);
+
 // sign into steam, get login info
 // use login info somehow...
 // login to game.capcom.com/cfn/sfv/profile/<username>
 // cookie name is scirid
 // cookies last 7 days
 
-var users = {};
+var users = {
+};
 
 var rankMap = {
     rookie: {
@@ -225,8 +232,12 @@ var charMap = {
 }
 
 function getDatabaseInfo(usernames, cb) {
-    // get users from the database via the server
-    // set the users
+    //create references
+    const dbRefObject = firebase.database().ref();
+
+    //sync object changes
+    dbRefObject.once('value', snap => console.log(snap.val()));
+
     users = [];
     if (typeof cb === "function") cb();
 }
